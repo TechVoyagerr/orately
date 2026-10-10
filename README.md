@@ -26,8 +26,8 @@ flowchart LR
     W[Apple Watch app] --> A[iOS app, SwiftUI]
     A --> WD[Widgets and Live Activity]
   end
-  A -->|authenticated calls| EF[50 edge functions, Deno and TypeScript]
-  EF --> DB[(PostgreSQL, 91 tables, row-level security)]
+  A -->|authenticated calls| EF[51 edge functions, Deno and TypeScript]
+  EF --> DB[(PostgreSQL, row-level security with 283 policies)]
   EF --> ASR[Deepgram ASR, Groq Whisper fallback]
   ASR --> LLM[Gemini analysis]
   LLM --> V{Schema validation}
@@ -47,19 +47,16 @@ flowchart LR
 
 **Privacy.** Export and account deletion are server endpoints, not support requests.
 
-**Safe schema evolution.** The schema is changed through 194 versioned migrations applied to live data.
+**Safe schema evolution.** The schema is changed through 195 versioned migrations applied to live data.
 
 ## Verified figures
 
 | Item | Value |
 |---|---|
-| Serverless edge functions | 50 |
-| PostgreSQL tables | 91 |
-| Versioned migrations | 194 |
-| Scripted live API test sessions | 70 |
-| Server test suite | 246 tests |
-
-The 70 sessions are scripted API sessions used to check prompt changes, not user sessions.
+| Serverless edge functions | 51 |
+| Row-level security policies | 283 |
+| Versioned migrations | 195 |
+| Declared test cases | about 590 (199 Swift, 393 Deno/TypeScript) |
 
 ## Tech stack
 
